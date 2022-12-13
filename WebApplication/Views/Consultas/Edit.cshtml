@@ -1,0 +1,91 @@
+﻿@model WebApplication.Models.Consulta
+
+@{Layout=null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        <h4>Consulta</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ConsultaId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataHora, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataHora, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataHora, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sintomas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sintomas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sintomas, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PetId, htmlAttributes:
+            new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownList("PetId", null, htmlAttributes:
+                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PetId, "",
+                new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UsuarioId, htmlAttributes:
+            new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                @Html.DropDownList("UsuarioId", null, htmlAttributes:
+                new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UsuarioId, "",
+                new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Exames, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @for (int i = 0; i < Model.ExamesCK.Count(); i++)
+                {
+                    @Html.EditorFor(m => Model.ExamesCK[i].Checked)<text>&nbsp;</text>
+                    @Html.DisplayFor(m => Model.ExamesCK[i].Descricao)<text>&nbsp;</text>
+                    <br />
+                    @Html.HiddenFor(m => Model.ExamesCK[i].Descricao)
+                    @Html.HiddenFor(m => Model.ExamesCK[i].Id)
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

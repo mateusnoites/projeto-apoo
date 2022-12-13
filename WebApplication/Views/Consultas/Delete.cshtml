@@ -1,0 +1,58 @@
+﻿@model WebApplication.Models.Consulta
+
+@{Layout=null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Consulta</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataHora)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sintomas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sintomas)
+            </dd>
+
+            <dt>Especie</dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pet.Nome)
+            </dd>
+
+            <dt>Veterinário</dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Veterinario.Nome)
+            </dd>
+
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

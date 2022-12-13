@@ -1,0 +1,73 @@
+﻿@model WebApplication.Models.Consulta
+
+@{Layout=null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Consulta</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DataHora)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sintomas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sintomas)
+            </dd>
+
+            <dt>Especie</dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pet.Nome)
+            </dd>
+
+            <dt>Veterinário</dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Veterinario.Nome)
+            </dd>
+
+            <dt>@Html.DisplayNameFor(model => model.Exames)</dt>
+            <dd>
+                @if (Model.ExamesCK != null)
+                {
+                    foreach (var item in Model.ExamesCK)
+                    {
+                        if (item.Checked)
+                        {
+                            <div>
+                                <span class="glyphicon glyphicon-list-alt"></span><Text>&nbsp;</Text>
+                                @item.Descricao
+                            </div>
+                        }
+                    }
+                }
+                else
+                {
+                    <span class="glyphicon glyphicon-list-alt"></span><text>Sem Exames Registrados</Text>
+                }
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ConsultaId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

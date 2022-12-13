@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication.Models.Pet>
+
+@{Layout=null;}
+    
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p id="create">
+        @Html.ActionLink("Criar Pet", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Idade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>Especie</th>
+            <th>Cliente</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Idade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Especie.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PetId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PetId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PetId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

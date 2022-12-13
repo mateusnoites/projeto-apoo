@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication.Models.Consulta>
+
+@{Layout = null; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p id="create">
+        @Html.ActionLink("Criar Consulta", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sintomas)
+            </th>
+            <th>Pet</th>
+            <th>Veterinario</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataHora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sintomas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pet.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Veterinario.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ConsultaId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ConsultaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ConsultaId })
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>
+</html>
