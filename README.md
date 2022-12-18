@@ -1,4 +1,4 @@
-# Crud Pet
+# Cruds Clínica Veterinária
 Projeto de APOO de Mateus Dias e Sabrina Vitoria
 
 <hr>
