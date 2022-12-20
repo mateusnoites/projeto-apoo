@@ -10,6 +10,8 @@ using WebApplication.DAL.Cadastros;
 using WebApplication.Models;
 using WebApplication.Models.ViewModels;
 
+// esse as atna dndo erro :(
+
 namespace WebApplication.Controllers.Procedimentos
 {
     public class ConsultasController : Controller
