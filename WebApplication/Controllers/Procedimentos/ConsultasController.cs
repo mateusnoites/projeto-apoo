@@ -56,7 +56,7 @@ namespace WebApplication.Controllers.Procedimentos
 
         public ActionResult Create()
         {
-            ViewBag.PetId     = new SelectList(context.Pets.OrderBy(b => b.Nome),     "PetId"    , "Nome");
+            ViewBag.PetId = new SelectList(context.Pets.OrderBy(b => b.Nome), "PetId" , "Nome");
             ViewBag.UsuarioId = new SelectList(context.Clientes.OrderBy(b => b.Nome), "UsuarioId", "Nome");
             return View();
         }
